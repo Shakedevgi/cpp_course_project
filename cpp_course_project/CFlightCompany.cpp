@@ -9,7 +9,7 @@ bool CFlightCompany::isValid(const std::string& name)
 CFlightCompany::CFlightCompany(const std::string& name)
 {
 	if (isValid(name))
-		this->nameOfCompany = name;
+		SetName(name);
 }
 
 CFlightCompany::CFlightCompany(const CFlightCompany& other)

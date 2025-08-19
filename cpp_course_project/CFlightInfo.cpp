@@ -9,10 +9,10 @@ bool CFlightInfo::isValid(std::string destination, int flightNumber, int timeOfF
 void CFlightInfo::setIfValid(std::string destination, int flightNumber, int timeOfFlight, int distance)
 {
 	if (isValid(destination, flightNumber, timeOfFlight, distance)) {
-		this->flightNumber = flightNumber;
-		this->destination = destination;
-		this->timeOfFlight = timeOfFlight;
-		this->distance = distance;
+		SetFlightNumber(flightNumber);
+		SetDest(destination);
+		SetTimeOfFlight(timeOfFlight);
+		SetDistance(distance);
 	}
 	else {
 

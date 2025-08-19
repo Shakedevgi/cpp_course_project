@@ -9,7 +9,7 @@ CCrewMember::CCrewMember(const std::string& name, const CAddress& address, int a
 		std::cerr << "Invalid crew member data\n";
 		throw std::invalid_argument("Invalid data");
 	}
-	this->name = name;
+	Setname(name);
 	this->airTime = airTime;
 }
 
