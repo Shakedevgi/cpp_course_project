@@ -3,25 +3,27 @@
 #include <string> 
 #include "Plane.h"
 
-CPlane::CPlane(int serialNumber, int chairsNumber, const std::string& model)
+int CPlane::nextSerial = 100;
+
+CPlane::CPlane(int chairsNumber, const std::string& model)
 {
-	setIfValid(serialNumber, chairsNumber, model);
+	setIfValid(nextSerial++, chairsNumber, model);
 }
 
-bool CPlane::isValid(int serial, int chairs, const std::string& m)
+bool CPlane::isValid(int serial, const std::string& m, int chairs)
 {
 	return serial > 0 && chairs > 0 && !m.empty();
 }
 
 void CPlane::setIfValid(int serial, int chairs, const std::string& m)
 {
-	if (isValid(serial, chairs, m)) {
+	if (isValid(serial, m, chairs )) {
 		serialNumber = serial;
 		chairsNumber = chairs;
 		model = m;
 	}
 	else {
-		std::cerr << "Invalid CPlane data.\n";
+		std::cerr << "";
 	}
 }
 
@@ -36,12 +38,43 @@ CPlane::~CPlane()
 {
 }
 
-
-
-void CPlane::Print() const
-{
-	std::cout << "Plane " << serialNumber << " degem " << model << " seats " << chairsNumber << std::endl;
+CPlane& CPlane::operator=(const CPlane& other) {
+	if (this != &other) {
+		serialNumber = other.serialNumber;
+		model = other.model;
+		chairsNumber = other.chairsNumber;
+	}
+	return *this; 
 }
+
+bool CPlane::operator==(const CPlane& other) const
+{
+	return serialNumber == other.serialNumber;
+}
+
+//prefix
+CPlane& CPlane::operator++()
+{
+	++chairsNumber;
+	return *this;
+}
+
+//postfix
+CPlane CPlane::operator++(int)
+{
+	CPlane tmp(*this);
+	++(*this);
+	return tmp;
+}
+
+std::ostream& operator<<(std::ostream& os, const CPlane& p)
+{
+	os << "plane " << p.serialNumber
+		<< " degem " << p.model
+		<< "  seats: " << p.chairsNumber << "\n";
+	return os;
+}
+
 
 int CPlane::GetSerialNumber() const
 {
@@ -56,9 +89,4 @@ const std::string& CPlane::GetModel() const
 int CPlane::GetChairsNumber() const
 {
 	return chairsNumber;
-}
-
-bool CPlane::IsEqual(const CPlane& other) const
-{
-	return (serialNumber == other.serialNumber);
 }

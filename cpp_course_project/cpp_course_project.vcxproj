@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CAddress.cpp" />
     <ClCompile Include="CCrewMember.cpp" />
+    <ClCompile Include="CFlight.cpp" />
     <ClCompile Include="CFlightCompany.cpp" />
     <ClCompile Include="CFlightInfo.cpp" />
     <ClCompile Include="CPlane.cpp" />
@@ -136,8 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
-    <ClInclude Include="FlightCompany.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="CrewMember.h" />
+    <ClInclude Include="Flight.h" />
+    <ClInclude Include="FlightCompany.h" />
     <ClInclude Include="FlightInfo.h" />
     <ClInclude Include="Plane.h" />
   </ItemGroup>

@@ -38,6 +38,8 @@ CFlightInfo::~CFlightInfo()
 
 int CFlightInfo::GetFlightNumber() const { return flightNumber; }
 
+int CFlightInfo::GetFNum() const { return flightNumber; }
+
 std::string CFlightInfo::GetDest() const { return destination; }
 
 int CFlightInfo::GetTimeOfFlight() const { return timeOfFlight; }
@@ -72,12 +74,31 @@ bool CFlightInfo::SetDistance(int distance)
 	return true;
 }
 
-bool CFlightInfo::IsEqual(const CFlightInfo& other) const
-{
+bool CFlightInfo::operator==(const CFlightInfo& other) const{
 	return this->flightNumber == other.flightNumber;
 }
 
-void CFlightInfo::Print() const
+bool CFlightInfo::operator!=(const CFlightInfo& other) const{
+	return !(*this == other);
+}
+
+CFlightInfo::operator int() const{
+	return timeOfFlight;
+}
+
+
+std::ostream& operator<<(std::ostream& os, const CFlightInfo& flightInfo){
+	os << "Flight Info dest: " << flightInfo.destination << " Number " << flightInfo.flightNumber << " minutes " << flightInfo.timeOfFlight << " KM " << flightInfo.distance << std::endl;
+	return os;
+}
+
+CFlightInfo& CFlightInfo::operator=(const CFlightInfo& other)
 {
-	std::cout << "Flight Info dest: " << destination << " Number " << flightNumber << " minutes " << timeOfFlight << " KM " << distance << std::endl;
+	if (this != &other) {
+		this->flightNumber = other.flightNumber;
+		this->destination = other.destination;
+		this->timeOfFlight = other.timeOfFlight;
+		this->distance = other.distance;
+	}
+	return *this;
 }

@@ -14,12 +14,14 @@ private:
 
 public:
 	//constructors
+	CFlightInfo() = delete;
 	CFlightInfo(std::string destination, int flightNumber, int timeOfFlight, int distance);
 	CFlightInfo(const CFlightInfo& other);
 	~CFlightInfo();
 
 	//getters
 	int GetFlightNumber() const;
+	int GetFNum() const;
 	std::string GetDest() const;
 	int GetTimeOfFlight() const;
 	int GetDistance() const;
@@ -30,9 +32,12 @@ public:
 	bool SetTimeOfFlight(int timeOfFlight);
 	bool SetDistance(int distance);
 
-	bool IsEqual(const CFlightInfo& other) const;
+	bool operator==(const CFlightInfo& other) const;
+	CFlightInfo& operator=(const CFlightInfo& other);
 
-	void Print() const;
+	friend std::ostream& operator<<(std::ostream& os, const CFlightInfo& flightInfo);
+	bool operator!=(const CFlightInfo& other) const;
+	operator int() const;
 
 	bool isValid(std::string destination, int flightNumber, int timeOfFlight, int distance);
 	void setIfValid(std::string destination, int flightNumber, int timeOfFlight, int distance);
