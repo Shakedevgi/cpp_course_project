@@ -53,19 +53,19 @@ bool CFlightCompany::SetName(const std::string& name) {
 std::ostream& operator<<(std::ostream& os, const CFlightCompany& company)
 {
 	os << "Flight Company: " << company.nameOfCompany << std::endl;
-	os << "Crew Members (" << company.numCrewMembers << "/" << MAX_CREWS << "):" << std::endl;
+	os << "Crew Members (" << company.numCrewMembers << "/" << CFlightCompany::MAX_CREWS << "):" << std::endl;
 	for (std::size_t i = 0; i < company.numCrewMembers; i++) {
 		if (company.crewMembers[i]) {
 			os << "  " << *company.crewMembers[i] << std::endl;
 		}
 	}
-	os << "Aircraft (" << company.numAircraft << "/" << MAX_PLANES << "):" << std::endl;
+	os << "Aircraft (" << company.numAircraft << "/" << CFlightCompany::MAX_PLANES << "):" << std::endl;
 	for (std::size_t i = 0; i < company.numAircraft; i++) {
 		if (company.aircraft[i]) {
 			os << "  " << *company.aircraft[i] << std::endl;
 		}
 	}
-	os << "Flights (" << company.numFlights << "/" << MAX_FLIGHT << "):" << std::endl;
+	os << "Flights (" << company.numFlights << "/" << CFlightCompany::MAX_FLIGHT << "):" << std::endl;
 	for (std::size_t i = 0; i < company.numFlights; i++) {
 		if (company.flights[i]) {
 			os << "  " << *company.flights[i] << std::endl;

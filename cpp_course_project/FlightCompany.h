@@ -5,10 +5,12 @@
 #include "CrewMember.h"
 #include "Plane.h"
 #include "Flight.h"
-#include "Constants.h"
 
 class CFlightCompany {
 private:
+	const static int MAX_CREWS = 100;      // Maximum crew members in company
+	const static int MAX_PLANES = 50;      // Maximum planes in company
+	const static int MAX_FLIGHT = 200;     // Maximum flights in company
 	std::string nameOfCompany;
 	CCrewMember* crewMembers[MAX_CREWS];
 	CPlane* aircraft[MAX_PLANES];

@@ -4,9 +4,9 @@
 #include "CrewMember.h"
 #include "Plane.h"
 #include "FlightInfo.h"
-#include "Constants.h"
 class CFlight {
 private:
+    const static int MAX_CREW = 10;        // Maximum crew members per flight
 	CFlightInfo flightInfo;
 	CPlane plane;
     bool hasPlane;

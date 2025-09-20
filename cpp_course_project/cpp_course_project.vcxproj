@@ -137,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Address.h" />
-    <ClInclude Include="Constants.h" />
     <ClInclude Include="CrewMember.h" />
     <ClInclude Include="Flight.h" />
     <ClInclude Include="FlightCompany.h" />
